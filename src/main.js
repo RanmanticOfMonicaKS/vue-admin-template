@@ -15,6 +15,16 @@ import router from './router'
 import '@/icons' // icon
 import '@/permission' // permission control
 
+
+import { filters } from '@/filters';
+console.log(filters, '---------> filters');
+
+let { time: { cont } } = filters;
+
+
+// 注册全局时间过滤器
+Vue.filter('cont', cont);
+
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api
@@ -24,8 +34,8 @@ import '@/permission' // permission control
  * please remove it before going online ! ! !
  */
 if (process.env.NODE_ENV === 'production') {
-  const { mockXHR } = require('../mock')
-  mockXHR()
+    const { mockXHR } = require('../mock')
+    mockXHR()
 }
 
 // set ElementUI lang to EN
@@ -36,8 +46,8 @@ Vue.use(ElementUI, { locale })
 Vue.config.productionTip = false
 
 new Vue({
-  el: '#app',
-  router,
-  store,
-  render: h => h(App)
+    el: '#app',
+    router,
+    store,
+    render: h => h(App)
 })
